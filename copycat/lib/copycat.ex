@@ -36,9 +36,9 @@ end
 
 defmodule FlightPrinter do
   def flight_to_string(flight) do
-    flight["airlineName"] <> " flight " <> flight["flightCode"] <>
+    FirstLetter.capitalize(flight["airlineName"]) <> " flight " <> flight["flightCode"] <>
     " from " <> flight["origination"] <> " to " <> flight["destination"] <>
-    " on board this " <> flight["planeType"] <> "\n"
+    " on board this " <> FirstLetter.capitalize(flight["planeType"]) <> "\n"
   end
 end
 
@@ -55,8 +55,10 @@ end
 
 defmodule FirstLetter do
   def capitalize(s) do
-    s |> String.split
-    |> Enum.map(fn s -> String.capitalize(s) end)
-    |> Enum.join(" ")
+    process(s, &String.capitalize/1)
+  end
+
+  def process(s, function) do
+    s |> String.split |> Enum.map(function) |> Enum.join(" ")
   end
 end
