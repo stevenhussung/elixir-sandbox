@@ -1,5 +1,7 @@
 IO.puts("Hello world")
 
+#One-off file. Not a part of any project.
+
 # Next task: read the json.
 # Subtask: install the package. Check!
 # Subsubtask get mix working again. Check!
