@@ -1,4 +1,4 @@
-defmodule ProjectEuler do
+defmodule Problem42 do
   @moduledoc """
   Documentation for `ProjectEuler`.
   """
