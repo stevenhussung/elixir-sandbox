@@ -19,7 +19,8 @@ defmodule ProjectEuler do
     IO.puts("Obtained a string of length #{file_contents |> String.length}")
 
     word_list = file_contents |> String.replace("\"", "") |> String.split(",")
-    short_word_list = word_list |> Enum.take(4)
+    IO.puts("Obtained a list of words of length #{word_list |> Enum.count}")
+    short_word_list = [] #word_list |> Enum.take(4)
 
     #Test methods
     short_word_list |>
@@ -30,15 +31,18 @@ defmodule ProjectEuler do
       end
       )
 
-    # triangle_word_list = word_list
-    #  |> Enum.filter(&TriangleNumber/1)
+    triangle_word_list = word_list
+     |> Enum.filter(fn w -> TriangleNumber.is_triangle_word(w) end)
 
-    # IO.puts(triangle_word_list |> Enum.count)
+    IO.puts(triangle_word_list |> Enum.count)
 
   end
 end
 
 defmodule TriangleNumber do
+  def is_triangle_word(word) do
+    is_triangle_number(word_to_number(word))
+  end
   def word_to_number(word) do
     alphabet_zero = ?a - 1
     word |> String.downcase
